@@ -2029,7 +2029,7 @@ async def initialize_bot_data():
     await update_stats_cache()
     logging.info("Данные бота успешно инициализированы.")
 
-async def on_startup(bot_instance: Bot):
+async def on_startup(bot: Bot):
     """Действия при запуске бота."""
     # Проверка наличия файлов данных
     if not os.path.exists(DB_FILE) or not os.path.exists(STATS_FILE):
@@ -2042,7 +2042,7 @@ async def on_startup(bot_instance: Bot):
     scheduler.start()
     logging.info("Планировщик запущен.")
 
-async def on_shutdown(bot_instance: Bot):
+async def on_shutdown(bot: Bot):
     """Действия при остановке бота."""
     logging.warning("Бот останавливается...")
     scheduler.shutdown()
